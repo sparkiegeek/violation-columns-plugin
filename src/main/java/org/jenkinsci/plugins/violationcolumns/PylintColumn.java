@@ -9,22 +9,22 @@ import net.sf.json.JSONObject;
 
 import org.kohsuke.stapler.StaplerRequest;
 
-public final class PyintColumn extends ListViewColumn {
+public final class PylintColumn extends ListViewColumn {
 
     /**
      * The plugin descriptor.
      */
-    private static final class PyintColumnDescriptor extends
+    private static final class PylintColumnDescriptor extends
             ListViewColumnDescriptor {
         @Override
         public String getDisplayName() {
-            return "Violations pyint";
+            return "Violations pylint";
         }
 
         @Override
         public ListViewColumn newInstance(final StaplerRequest request,
                 final JSONObject formData) throws FormException {
-            return new PyintColumn();
+            return new PylintColumn();
         }
 
         @Override
@@ -37,7 +37,7 @@ public final class PyintColumn extends ListViewColumn {
      * The plugin descriptor.
      */
     @Extension
-    public static final Descriptor<ListViewColumn> DESCRIPTOR = new PyintColumnDescriptor();
+    public static final Descriptor<ListViewColumn> DESCRIPTOR = new PylintColumnDescriptor();
 
     @Override
     public Descriptor<ListViewColumn> getDescriptor() {
@@ -46,6 +46,6 @@ public final class PyintColumn extends ListViewColumn {
     
    
     public String getViolations(Job<?, ?> job) {
-        return Utils.getViolations(job, "pyint");
+        return Utils.getViolations(job, "pylint");
     }
 }
